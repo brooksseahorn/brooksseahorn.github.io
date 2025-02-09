@@ -1,5 +1,9 @@
 <h1>....phewtat</h1>
 
 <interesante>
-  <p>Esto es un párrafo</p>
-  <p>Esto es otro párrafo</p>
+  <p>Queue is current 455 jobs deep...</p>
+  <p>Node status:</p>
+  <tab>node00: 55% CPU, 45% MEM, 13% GPU</tab>
+  <tab>node01: 30% CPU, 80% MEM, 98% GPU</tab>
+  <tab>node02: 60% CPU, 57% MEM,  9% GPU</tab>
+  <tab>ctrl1: 20% CPU, 68% MEM, 2 threads, 0 DBD agent, very low RPC</tab>
