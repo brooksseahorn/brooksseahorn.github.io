@@ -1,5 +1,6 @@
 body {
-	background-color: #000
+	background-color: #000;
+	color: white;
 }
 
 #console {
@@ -35,6 +36,10 @@ a {
 
 #op{
     	color: #888888
+}
+
+.white-text {
+    color: white;
 }
 
 @keyframes change {
