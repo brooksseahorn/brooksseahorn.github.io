@@ -7,3 +7,20 @@
   <tab>node01: 30% CPU, 20% MEM, 98% GPU</tab>
   <tab>node02: 90% CPU, 87% MEM,  9% GPU</tab>
   <tab>ctrl1: 20% CPU, 28% MEM, 2 threads, 0 DBD agent, medium low RPC</tab>
+
+  <p>Last 24h job stats:</p>
+  <tab>Completed: 1234</tab>
+  <tab>Failed: 56</tab>
+  <tab>Cancelled: 12</tab>
+</interesante>
+
+<h2>....phewtat</h2>
+
+<p>System is experiencing high load due to a surge in job submissions. The queue has grown significantly, and the processing velocity has decreased. Users may experience delays in job completion times.</p>
+<p>Administrators are advised to monitor node performance closely and consider redistributing workloads or adding additional resources to manage the increased demand.</p>
+<p>For further assistance, please contact the system administrator.</p>
+
+<h3>....phewtat</h3>
+<p>End of report.</p>
+
+
