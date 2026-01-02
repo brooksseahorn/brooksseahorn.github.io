@@ -82,7 +82,7 @@
     }).join('');
 
     const body = [
-      '<h1>....phewtat</h1>',
+      '<h1>Zeehäun Cluster Status...</h1>',
       '',
       '<interesante>',
       `  <p>Queue is <span class="metric" data-key="queue">${d.queueDepth}</span> jobs deep...` +
@@ -101,7 +101,7 @@
       `  <tab>Cancelled: <span class="metric" data-key="jobs-cancelled">${d.jobs.cancelled}</span></tab>`,
       '</interesante>',
       '',
-      '<h2>....phewtat</h2>',
+      '<h2></h2>',
       ...d.messages.map(m => `
 <p>${m}</p>`),
       '',
