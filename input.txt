@@ -1,5 +1,6 @@
-<h1>....phewtat</h1>
+<h1>Zeehäun Cluster Status Report</h1>
 
+<h2>Nodes and Queue Overview</h2>
 <interesante>
   <p>Queue is 455 jobs deep...Velocity -1.3 jobs/minute</p>
   <p>Node status:</p>
@@ -14,13 +15,14 @@
   <tab>node08: 30% CPU, 15% MEM,  0% GPU</tab>
   <tab>ctrl1: 20% CPU, 28% MEM, 2 threads, 0 DBD agent, medium low RPC</tab>
 
+<h2>Job Statistics</h2>
   <p>Last 24h job stats:</p>
   <tab>Completed: 1234</tab>
   <tab>Failed: 56</tab>
   <tab>Cancelled: 12</tab>
 </interesante>
 
-<h2>....phewtat</h2>
+<h2>System Load Analysis</h2>
 
 <p>System is experiencing high load due to a surge in job submissions. The queue has grown significantly, and the processing velocity has decreased. Users may experience delays in job completion times.</p>
 <p>Administrators are advised to monitor node performance closely and consider redistributing workloads or adding additional resources to manage the increased demand.</p>
