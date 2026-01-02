@@ -47,3 +47,20 @@ a {
     	50% { color:  #0f0; }
     	99% { color: black; }
 }
+
+/* Ensure each <tab> custom element renders on its own line */
+tab {
+    display: block;
+}
+
+/* Make <interesante> a block-level container */
+interesante {
+    display: block;
+}
+
+/* Highlight high utilization nodes */
+tab.hot {
+    background-color: rgba(255, 0, 0, 0.15);
+    border-left: 3px solid #ff4d4f;
+    padding-left: 6px;
+}
