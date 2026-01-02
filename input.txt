@@ -3,9 +3,15 @@
 <interesante>
   <p>Queue is 455 jobs deep...Velocity -1.3 jobs/minute</p>
   <p>Node status:</p>
-  <tab>node00: 36% CPU, 45% MEM, 13% GPU</tab>
-  <tab>node01: 30% CPU, 20% MEM, 98% GPU</tab>
+  <tab>node00: 96% CPU, 45% MEM, 13% GPU</tab>
+  <tab>node01: 90% CPU, 20% MEM, 98% GPU</tab>
   <tab>node02: 90% CPU, 87% MEM,  9% GPU</tab>
+  <tab>node03: 82% CPU, 15% MEM,  0% GPU</tab>
+  <tab>node04: 70% CPU, 55% MEM, 76% GPU</tab>
+  <tab>node05: 60% CPU, 25% MEM, 34% GPU</tab>
+  <tab>node06: 50% CPU, 35% MEM, 12% GPU</tab>
+  <tab>node07: 40% CPU, 45% MEM,  0% GPU</tab>
+  <tab>node08: 30% CPU, 15% MEM,  0% GPU</tab>
   <tab>ctrl1: 20% CPU, 28% MEM, 2 threads, 0 DBD agent, medium low RPC</tab>
 
   <p>Last 24h job stats:</p>
