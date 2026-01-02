@@ -107,6 +107,7 @@
       '',
       '<h3>....phewtat</h3>',
       '<p>End of report.</p>',
+      '<p class="timestamp-line">Last updated: <span id="timestamp"></span></p>',
       '\n\n'
     ].join('\n');
 
@@ -175,7 +176,16 @@
     return '';
   }
 
+  function updateTimestamp() {
+    const el = document.getElementById('timestamp');
+    if (!el) return;
+    const now = new Date();
+    el.textContent = now.toISOString(); // ISO 8601 in UTC (e.g., 2026-01-02T04:29:15.000Z)
+  }
+
   function schedulePeriodicUpdates() {
+    // Set timestamp immediately (do not change numbers yet)
+    updateTimestamp();
     setInterval(() => {
       const next = generateSnapshot();
       document.querySelectorAll('.metric').forEach(el => {
@@ -190,6 +200,7 @@
         if (n.cpu > 90 || n.gpu > 90) line.classList.add('hot');
         else line.classList.remove('hot');
       });
+      updateTimestamp();
     }, 15000);
   }
 
