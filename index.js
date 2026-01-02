@@ -4,10 +4,36 @@
     const consoleEl = document.getElementById('console');
     if (!consoleEl) return; // safety
 
-    // --- Utilities ---
-    const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-    const choice = (arr) => arr[Math.floor(Math.random() * arr.length)];
-    const pad2 = (n) => n.toString().padStart(2, '0');
+  // --- Utilities ---
+  const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+  const choice = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  const pad2 = (n) => n.toString().padStart(2, '0');
+
+  // --- Message pool (external JSON with optional weights) ---
+  const defaultMessagePool = [
+    { text: 'Backfill: evaluating pending set; estimated next start within 10–20s.', weight: 1 },
+    { text: 'slurmctld: RPC backlog medium; monitoring retry latency.', weight: 2 },
+    { text: 'healthcheck: node04 reporting GPU Xid event; auto‑drain queued if repeated.', weight: 3 },
+    { text: 'acct_gather_energy: sampling enabled (60s).', weight: 1 },
+    { text: 'priority: fair‑share adjusted for user cohort; queue reordering applied.', weight: 1 },
+    { text: 'slurmdbd: connection healthy; agent backlog 0.', weight: 1 },
+    { text: 'licenses: 3 jobs waiting for feature tokens; retry scheduled.', weight: 2 },
+    { text: 'preemptor: no candidates at this time; soft preemption disabled.', weight: 1 }
+  ];
+  let messagePool = [];
+
+  function loadMessages() {
+    return fetch('messages.json', { cache: 'no-store' })
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(arr => {
+        if (Array.isArray(arr)) {
+          messagePool = arr
+            .filter(x => x && typeof x.text === 'string')
+            .map(x => ({ text: x.text, weight: Number(x.weight) > 0 ? Number(x.weight) : 1 }));
+        }
+      })
+      .catch(() => { /* fall back silently */ });
+  }
 
   // --- Data generation according to user constraints ---
   function generateSnapshot() {
@@ -51,20 +77,20 @@
   }
 
   function pickMessages(n) {
-    const pool = [
-      'Backfill: evaluating pending set; estimated next start within 10–20s.',
-      'slurmctld: RPC backlog medium; monitoring retry latency.',
-      'healthcheck: node04 reporting GPU Xid event; auto‑drain queued if repeated.',
-      'acct_gather_energy: sampling enabled (60s).',
-      'priority: fair‑share adjusted for user cohort; queue reordering applied.',
-      'slurmdbd: connection healthy; agent backlog 0.',
-      'licenses: 3 jobs waiting for feature tokens; retry scheduled.',
-      'preemptor: no candidates at this time; soft preemption disabled.'
-    ];
-    const copy = pool.slice();
+    const pool = (messagePool && messagePool.length) ? messagePool.slice() : defaultMessagePool.slice();
+    const k = Math.min(n, pool.length);
     const out = [];
-    while (out.length < n && copy.length) {
-      out.push(copy.splice(Math.floor(Math.random() * copy.length), 1)[0]);
+    for (let i = 0; i < k; i++) {
+      const total = pool.reduce((sum, x) => sum + (Number(x.weight) > 0 ? Number(x.weight) : 1), 0);
+      let r = Math.random() * total;
+      let idx = 0;
+      for (; idx < pool.length; idx++) {
+        r -= (Number(pool[idx].weight) > 0 ? Number(pool[idx].weight) : 1);
+        if (r <= 0) break;
+      }
+      const chosenIndex = Math.min(idx, pool.length - 1);
+      const [picked] = pool.splice(chosenIndex, 1);
+      out.push(picked.text);
     }
     return out;
   }
@@ -205,9 +231,11 @@
   }
 
   // --- Boot ---
-  const first = generateSnapshot();
-  const html = buildReportHTML(first);
-  typeHTMLInto(consoleEl, html, schedulePeriodicUpdates);
+  loadMessages().finally(() => {
+    const first = generateSnapshot();
+    const html = buildReportHTML(first);
+    typeHTMLInto(consoleEl, html, schedulePeriodicUpdates);
+  });
   }
 
   if (document.readyState === 'loading') {

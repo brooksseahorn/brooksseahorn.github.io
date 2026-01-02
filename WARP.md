@@ -25,7 +25,7 @@ Linting / tests
 - Static single‑page site.
   - Entry: `index.html` loads `index.css` and `index.js`, and contains a `#console` div where content renders. jQuery is referenced but currently unused by the code in `index.js`.
   - Behavior: `index.js` (vanilla JS) generates a Slurm-like status report client‑side and simulates typing it into `#console`. After the initial render, a timer re‑types only the numeric fields every 15 seconds to appear live.
-  - Content: The report is assembled dynamically; `input.txt` is no longer consumed. `brooks.txt` remains as an example of prior content.
+  - Content: The report is assembled dynamically; `messages.json` provides system messages with optional `weight` used for weighted random selection. `input.txt` is no longer consumed. `brooks.txt` remains as an example of prior content.
   - Presentation: `index.css` styles the terminal‑like UI.
   - Site configuration: `_config.yml` sets the Jekyll theme `jekyll-theme-architect`; `CNAME` configures the custom domain.
 

@@ -1,0 +1,16 @@
+[
+  { "text": "Backfill: evaluating pending set; estimated next start within 10–20s.", "weight": 1 },
+  { "text": "slurmctld: RPC backlog medium; monitoring retry latency.", "weight": 2 },
+  { "text": "healthcheck: node04 reporting GPU Xid event; auto‑drain queued if repeated.", "weight": 3 },
+  { "text": "acct_gather_energy: sampling enabled (60s).", "weight": 1 },
+  { "text": "priority: fair‑share adjusted for user cohort; queue reordering applied.", "weight": 1 },
+  { "text": "slurmdbd: connection healthy; agent backlog 0.", "weight": 1 },
+  { "text": "licenses: 3 jobs waiting for feature tokens; retry scheduled.", "weight": 2 },
+  { "text": "preemptor: no candidates at this time; soft preemption disabled.", "weight": 1 },
+  { "text": "jobacct_gather: completed job 12345; resources released.", "weight": 1 },
+  { "text": "scontrol: updated job 67890 priority to 1500.", "weight": 1 },
+  { "text": "gres: GPU allocation successful for job 54321.", "weight": 1 },
+  { "text": "slurmd: node05 heartbeat delayed; investigating network latency.", "weight": 2 },
+  { "text": "reservation: new reservation created for maintenance window.", "weight": 1 },
+  { "text": "topology: updated node topology for optimized scheduling.", "weight": 1 }
+]
